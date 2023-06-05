@@ -55,11 +55,12 @@ cleanfiles += $(link-out-dir$(sm))/dyn_list
 link-ldadd  = $(user-ta-ldadd) $(addprefix -L,$(libdirs))
 link-ldadd += --start-group
 link-ldadd += $(addprefix -l,$(libnames))
+link-ldadd += --end-group
+
 ifneq (,$(filter %.cpp,$(srcs)))
 link-ldflags += --eh-frame-hdr
 link-ldadd += $(libstdc++$(sm)) $(libgcc_eh$(sm))
 endif
-link-ldadd += --end-group
 
 link-ldadd-after-libgcc += $(addprefix -l,$(libnames-after-libgcc))
 

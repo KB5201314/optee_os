@@ -71,6 +71,8 @@ endif
 CFG_TEE_TA_LOG_LEVEL ?= 2
 cppflags$(sm) += -DTRACE_LEVEL=$(CFG_TEE_TA_LOG_LEVEL)
 
+# imlk: in some case where std headers from toolchains was override by headers from optee, you may wanna to resolve them by set optee header dir with -idirafter
+# cppflags$(sm) += -I. -idirafter $(ta-dev-kit-dir$(sm))/include
 cppflags$(sm) += -I. -I$(ta-dev-kit-dir$(sm))/include
 
 ifeq ($(CFG_TA_MCOUNT),y)
