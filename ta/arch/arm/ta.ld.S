@@ -35,10 +35,6 @@ SECTIONS {
 	}
 	.eh_frame : { KEEP(*(.eh_frame)) *(.eh_frame.*) }
 	.gcc_except_table : { *(.gcc_except_table .gcc_except_table.*) }
-	.rodata : {
-		*(.gnu.linkonce.r.*)
-		*(.rodata .rodata.*)
-	}
 	.ARM.extab : { *(.ARM.extab* .gnu.linkonce.armextab.*) }
 	/* .ARM.exidx is sorted, so has to go in its own output section.  */
 	PROVIDE_HIDDEN(__exidx_start = .);
@@ -83,6 +79,11 @@ SECTIONS {
 	.rel.plt : { *(.rel.plt) }
 	.rela.plt : { *(.rela.plt) }
 
+	/* imlk: move .rodata to here, as a workaround for write ro data during relocation in ldelf */
+	.rodata : {
+		*(.gnu.linkonce.r.*)
+		*(.rodata .rodata.*)
+	}
 	.data : { *(.data .data.* .gnu.linkonce.d.*) }
 	.bss : {
 		*(.bss .bss.* .gnu.linkonce.b.* COMMON)

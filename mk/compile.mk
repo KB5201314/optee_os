@@ -98,7 +98,7 @@ comp-flags-$2 = $$(filter-out $$(AFLAGS_REMOVE) $$(aflags-remove) \
 		   $$(AFLAGS) $$(comp-aflags$$(comp-sm-$2)) \
 		   $$(aflags$$(comp-sm-$2)) $$(aflags-$2))
 
-else ifeq ($$(filter %.cpp,$1),$1)
+else ifeq ($$(filter %.cpp %.cc,$1),$1)
 comp-q-$2 := CXX
 comp-compiler-$2 := $$(CXX$(sm))
 comp-flags-$2 = $$(filter-out $$(CXXFLAGS_REMOVE) $$(cxxflags-remove) \

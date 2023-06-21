@@ -24,6 +24,7 @@ libgcc$(sm)  	:= $(shell $(CC$(sm)) $(CFLAGS$(arch-bits-$(sm))) \
 libstdc++$(sm)	:= --start-group \
 			$(shell $(CXX$(sm)) $(CXXFLAGS$(arch-bits-$(sm))) $(comp-cxxflags$(sm)) -print-file-name=libstdc++.a 2> /dev/null) \
 			$(shell $(CXX$(sm)) $(CXXFLAGS$(arch-bits-$(sm))) $(comp-cxxflags$(sm)) -print-file-name=libc.a 2> /dev/null) \
+			$(shell $(CXX$(sm)) $(CXXFLAGS$(arch-bits-$(sm))) $(comp-cxxflags$(sm)) -print-file-name=libm.a 2> /dev/null) \
 			$(shell $(CXX$(sm)) $(CXXFLAGS$(arch-bits-$(sm))) $(comp-cxxflags$(sm)) -print-file-name=libnosys.a 2> /dev/null) \
 			$(shell $(CXX$(sm)) $(CXXFLAGS$(arch-bits-$(sm))) $(comp-cxxflags$(sm)) -print-file-name=crti.o 2> /dev/null) \
 			--end-group

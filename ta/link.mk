@@ -57,7 +57,7 @@ link-ldadd += --start-group
 link-ldadd += $(addprefix -l,$(libnames))
 link-ldadd += --end-group
 
-ifneq (,$(filter %.cpp,$(srcs)))
+ifneq (,$(filter %.cpp %.cc,$(srcs)))
 link-ldflags += --eh-frame-hdr
 link-ldadd += $(libstdc++$(sm)) $(libgcc_eh$(sm))
 endif
